@@ -50,7 +50,7 @@ function App() {
       link: "https://www.diasporatrust.xyz/",
     },
     {
-      title: "Achlyton Tine",
+      title: "Achly Tontine",
       description: "Modern digital solution for streamlined business operations and community engagement platform",
       image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
       tech: ["React", "Node.js", "MongoDB"],
@@ -519,7 +519,7 @@ function App() {
                 <h4 className="text-sm font-semibold mb-3 text-white/50">Business Information</h4>
                 <div className="space-y-2 text-sm text-white/60">
                   <p>Registration: <span className="text-white/80">SNDKR2024A53814</span></p>
-                  <p>NINEA: <span className="text-white/80">011811355</span></p>
+                  
                 </div>
               </div>
 
@@ -553,7 +553,7 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-4">
             <p className="text-white/50">
-              © 2024 love dk tech. All rights reserved. Crafted with passion.
+              © 2026 love dk tech. All rights reserved. Crafted with passion.
             </p>
           </div>
           <div className="text-center text-xs text-white/40 space-y-1">
