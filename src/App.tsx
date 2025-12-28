@@ -557,7 +557,7 @@ function App() {
             </p>
           </div>
           <div className="text-center text-xs text-white/40 space-y-1">
-            <p>Business Registration: SNDKR2024A53814 | NINEA: 011811355</p>
+            <p>Business Registration: SNDKR2024A53814</p>
           </div>
         </div>
       </footer>
