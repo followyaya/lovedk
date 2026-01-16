@@ -717,9 +717,9 @@
       function snapshot() {
         try {
           const html = document.documentElement.outerHTML
-            .replace(/<script[\s\S]*?<\/script>/gi, '');
-          const injected = html.replace('</head>',
-            `<style>html,html *{animation-play-state:paused!important;transition:none!important}html{pointer-events:none!important;overflow:hidden!important}</style></head>`
+            .replace(new RegExp('<script[\\s\\S]*?</' + 'script>', 'gi'), '');
+          const injected = html.replace('</' + 'head>',
+            `<style>html,html *{animation-play-state:paused!important;transition:none!important}html{pointer-events:none!important;overflow:hidden!important}</style></` + `head>`
           );
           parent?.postMessage({ type: 'SNAPSHOT', html: injected }, '*');
         } catch (e) {
