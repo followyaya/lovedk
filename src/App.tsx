@@ -6,6 +6,7 @@ import { AnimatedGradientBackground } from "./components/AnimatedGradient";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import { Textarea } from "./components/ui/textarea";
+import babelShopImg from "./assets/babel-shop.png";
 import { Code2, Smartphone, Palette, Github, Linkedin, Twitter, Mail, ExternalLink, Phone, Target, Users, Award, Zap } from "lucide-react";
 
 function App() {

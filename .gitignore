@@ -2,3 +2,5 @@ node_modules
 .vite
 repo.zip
 .DS_Store
+
+dist
