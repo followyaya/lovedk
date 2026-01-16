@@ -43,16 +43,51 @@ function App() {
 
   const projects = [
     {
+      title: "Yarahman Dental",
+      description: "Modern dental clinic website with appointment scheduling and service information",
+      image: "https://api.microlink.io/?url=https://yarahmandental.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://yarahmandental.vercel.app/",
+    },
+    {
+      title: "Weuzz Live Privé",
+      description: "Exclusive live streaming and content platform",
+      image: "https://image.thum.io/get/width/600/crop/800/https://weuzzliveprive.vercel.app/",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://weuzzliveprive.vercel.app/",
+    },
+    {
+      title: "Babel Shop Boutique",
+      description: "Online boutique shop for fashion and lifestyle products",
+      image: babelShopImg,
+      tech: ["Next.js", "E-commerce", "Tailwind CSS"],
+      link: "https://babelshopboutique.vercel.app/",
+    },
+    {
+      title: "Luxury Perfume",
+      description: "Elegant showcase website for luxury fragrances and perfumes",
+      image: "https://api.microlink.io/?url=https://v0-luxury-perfume-website-zeta.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://v0-luxury-perfume-website-zeta.vercel.app/",
+    },
+    {
+      title: "Jobad Gym",
+      description: "Modern gym website with class schedules and membership plans",
+      image: "https://image.thum.io/get/width/600/crop/800/https://v0-jobad-gym-website.vercel.app/",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://v0-jobad-gym-website.vercel.app/",
+    },
+    {
       title: "Diaspora Trust",
       description: "A comprehensive platform connecting diaspora communities with trusted financial services and investment opportunities",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      image: "https://api.microlink.io/?url=https://www.diasporatrust.xyz/&screenshot=true&meta=false&embed=screenshot.url",
       tech: ["Next.js", "TypeScript", "Tailwind CSS"],
       link: "https://www.diasporatrust.xyz/",
     },
     {
       title: "Achly Tontine",
       description: "Modern digital solution for streamlined business operations and community engagement platform",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
+      image: "https://api.microlink.io/?url=https://achlytontine.com/&screenshot=true&meta=false&embed=screenshot.url",
       tech: ["React", "Node.js", "MongoDB"],
       link: "https://achlytontine.com/",
     },
