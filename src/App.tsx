@@ -10,11 +10,19 @@ import ClientDashboard from "./pages/ClientDashboard";
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
-
 function App() {
+  if (!PUBLISHABLE_KEY) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center p-8 bg-white rounded-lg shadow-md">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Configuration Error</h1>
+          <p className="text-gray-700">Missing Clerk Publishable Key.</p>
+          <p className="text-gray-500 text-sm mt-2">Please add VITE_CLERK_PUBLISHABLE_KEY to your environment variables.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <CurrencyProvider>
