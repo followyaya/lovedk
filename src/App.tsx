@@ -20,8 +20,11 @@ function App() {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const handleWhatsAppClick = (serviceTitle: string) => {
+    const phoneNumber = "18652829928";
+    const message = `Hello, I would like to pay for the service: ${serviceTitle}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   const services = [
