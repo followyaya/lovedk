@@ -51,6 +51,13 @@ export default function Home() {
 
   const projects = [
     {
+      title: "Senparc Dakar",
+      description: "Le Spot Fun pour Petits et Grands - Parc pour enfants sécurisé, trampolines, jeux gonflables, restaurant & gourmandises",
+      image: "https://api.microlink.io/?url=https://senparcdakar.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://senparcdakar.vercel.app/",
+    },
+    {
       title: "Yarahman Dental",
       description: "Modern dental clinic website with appointment scheduling and service information",
       image: "https://api.microlink.io/?url=https://yarahmandental.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
