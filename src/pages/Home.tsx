@@ -106,6 +106,34 @@ export default function Home() {
       tech: ["React", "Node.js", "MongoDB"],
       link: "https://achlytontine.com/",
     },
+    {
+      title: "Analytics Dashboard",
+      description: "Real-time data visualization platform for business intelligence",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      tech: ["Next.js", "D3.js", "PostgreSQL"],
+      link: "#",
+    },
+    {
+      title: "Social Media Platform",
+      description: "Community-driven platform with real-time messaging and content sharing",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
+      tech: ["React", "GraphQL", "MongoDB"],
+      link: "#",
+    },
+    {
+      title: "Fitness Tracking App",
+      description: "Comprehensive fitness companion with workout plans and progress tracking",
+      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+      tech: ["Flutter", "Python", "TensorFlow"],
+      link: "#",
+    },
+    {
+      title: "Restaurant POS System",
+      description: "Point-of-sale solution with inventory, orders, and analytics",
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
+      tech: ["Vue.js", "Express", "MySQL"],
+      link: "#",
+    },
   ];
 
   return (
