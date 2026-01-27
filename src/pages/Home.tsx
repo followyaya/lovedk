@@ -107,13 +107,6 @@ export default function Home() {
       link: "https://achlytontine.com/",
     },
     {
-      title: "MacGroup Platforme",
-      description: "Comprehensive digital platform for MacGroup services and operations",
-      image: "https://api.microlink.io/?url=https://macgroupplatforme.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
-      tech: ["Next.js", "React", "Tailwind CSS"],
-      link: "https://macgroupplatforme.vercel.app/",
-    },
-    {
       title: "Analytics Dashboard",
       description: "Real-time data visualization platform for business intelligence",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
