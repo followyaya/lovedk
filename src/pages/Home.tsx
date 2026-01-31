@@ -53,7 +53,7 @@ export default function Home() {
     {
       title: "EDK EMPIRE",
       description: "Luxe Africain • Livraison Mondiale - Redéfinition du luxe africain par Dame La Marquise, Marie Prudence Aya Edike Bai",
-      image: "https://api.microlink.io/?url=https://edkempire.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      image: "https://api.microlink.io/?url=https://edkempire.vercel.app/&screenshot=true&meta=false&embed=screenshot.url&waitFor=5s",
       tech: ["Next.js", "React", "Tailwind CSS"],
       link: "https://edkempire.vercel.app/",
     },
