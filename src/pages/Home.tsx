@@ -51,6 +51,13 @@ export default function Home() {
 
   const projects = [
     {
+      title: "KIKI DECO SARL",
+      description: "Solutions immobilières en Côte d'Ivoire - Terrains et maisons avec paiements échelonnés sans apport initial",
+      image: "https://api.microlink.io/?url=https://kikideco.vercel.app/&screenshot=true&meta=false&embed=screenshot.url&waitFor=5s",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://kikideco.vercel.app/",
+    },
+    {
       title: "EDK EMPIRE",
       description: "Luxe Africain • Livraison Mondiale - Redéfinition du luxe africain par Dame La Marquise, Marie Prudence Aya Edike Bai",
       image: "https://api.microlink.io/?url=https://edkempire.vercel.app/&screenshot=true&meta=false&embed=screenshot.url&waitFor=5s",
