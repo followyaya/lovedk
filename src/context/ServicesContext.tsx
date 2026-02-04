@@ -24,56 +24,56 @@ const initialServices: Service[] = [
     iconName: 'Layout',
     title: "Single Page Site",
     description: "Perfect for portfolios, landing pages, and small businesses. High impact, one-page experience.",
-    priceEur: 460 // ~500 USD
+    priceEur: 400
   },
   {
     id: 'multi-page',
     iconName: 'Globe',
     title: "Multi-Page Site",
     description: "Comprehensive website (up to 5 pages) for businesses needing more content structure.",
-    priceEur: 920 // ~1000 USD
+    priceEur: 600
   },
   {
     id: 'erp',
     iconName: 'Database',
     title: "ERP Application",
     description: "Enterprise Resource Planning systems to streamline your business operations and data.",
-    priceEur: 4600 // ~5000 USD
+    priceEur: 800
   },
   {
     id: 'crm',
     iconName: 'Users',
     title: "CRM Application",
     description: "Customer Relationship Management tools to boost sales and customer satisfaction.",
-    priceEur: 4150 // ~4500 USD
+    priceEur: 800
   },
   {
     id: 'saas',
     iconName: 'Cloud',
     title: "SaaS Platform",
     description: "Scalable Software as a Service solutions built for growth and recurring revenue.",
-    priceEur: 3200 // ~3500 USD
+    priceEur: 1000
   },
   {
     id: 'android',
     iconName: 'Smartphone',
     title: "Android Development",
     description: "Native Android applications tailored for the world's most popular mobile OS.",
-    priceEur: 2750 // ~3000 USD
+    priceEur: 1200
   },
   {
     id: 'ios',
     iconName: 'Smartphone',
     title: "iOS Development",
     description: "Premium native iOS applications for iPhone and iPad ecosystems.",
-    priceEur: 3200 // ~3500 USD
+    priceEur: 1200
   },
   {
     id: 'cross-platform',
     iconName: 'MonitorSmartphone',
     title: "Cross-Platform Mobile",
     description: "Efficient mobile apps that work seamlessly on both iOS and Android from a single codebase.",
-    priceEur: 4600 // ~5000 USD
+    priceEur: 2200
   }
 ];
 
