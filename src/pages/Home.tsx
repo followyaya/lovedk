@@ -65,14 +65,6 @@ export default function Home() {
       link: "https://edkempire.vercel.app/",
     },
     {
-      title: "XCUBES",
-      description: "Maisons Conteneurs Écologiques - Solutions modulaires, commerciales et personnalisable avec garantie jusqu'à 5 ans",
-      image: "https://api.microlink.io/?url=https://xcubes.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
-      tech: ["Next.js", "React", "Tailwind CSS"],
-      link: "https://xcubes.vercel.app/",
-    },
-  
-    {
       title: "Senparc Dakar",
       description: "Le Spot Fun pour Petits et Grands - Parc pour enfants sécurisé, trampolines, jeux gonflables, restaurant & gourmandises",
       image: "https://api.microlink.io/?url=https://senparcdakar.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
