@@ -6,17 +6,18 @@ import { useServices } from "../context/ServicesContext";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
+import { createPaydunyaInvoice } from "../services/paydunya";
 
 export default function Checkout() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useUser();
-  const { convert } = useCurrency();
+  const { convert, exchangeRates } = useCurrency();
   const { getIconComponent } = useServices();
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   
   // Get service from navigation state or default to null
   const service = location.state?.service;
@@ -26,7 +27,13 @@ export default function Checkout() {
       // If accessed directly without a service, redirect to home
       navigate("/");
     }
-  }, [service, navigate]);
+    
+    // Check for cancel status
+    const params = new URLSearchParams(location.search);
+    if (params.get("status") === "cancel") {
+      alert("Payment was cancelled.");
+    }
+  }, [service, navigate, location.search]);
 
   if (!service) return null;
 
@@ -45,77 +52,64 @@ export default function Checkout() {
     console.error("Error resolving icon:", e);
   }
 
-  const handleWhatsAppPayment = () => {
-    const phoneNumber = "18652829928";
-    const message = `New Order:
-Service: ${service.title}
-Price: ${convert(service.price)}
-Client: ${user?.fullName} (${user?.primaryEmailAddress?.emailAddress})
-Phone: ${phone}
-Notes: ${notes}
-
-I would like to proceed with payment.`;
-    
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsProcessing(true);
     
-    // Create new order object
-    const newOrder = {
-      id: crypto.randomUUID(),
-      serviceId: service.id,
-      serviceTitle: service.title,
-      iconName: service.iconName,
-      price: service.price, // Store base price in EUR
-      currency: 'EUR',
-      date: new Date().toISOString(),
-      status: 'pending',
-      userEmail: user?.primaryEmailAddress?.emailAddress,
-      phone,
-      notes
-    };
+    try {
+      // Create new order object (for local storage backup)
+      const newOrder = {
+        id: crypto.randomUUID(),
+        serviceId: service.id,
+        serviceTitle: service.title,
+        iconName: service.iconName,
+        price: service.price, // Store base price in EUR
+        currency: 'EUR',
+        date: new Date().toISOString(),
+        status: 'pending_payment',
+        userEmail: user?.primaryEmailAddress?.emailAddress,
+        phone,
+        notes
+      };
 
-    // Save to local storage
-    const existingOrders = JSON.parse(localStorage.getItem('lovedktech_orders') || '[]');
-    localStorage.setItem('lovedktech_orders', JSON.stringify([...existingOrders, newOrder]));
+      // Save to local storage
+      const existingOrders = JSON.parse(localStorage.getItem('lovedktech_orders') || '[]');
+      localStorage.setItem('lovedktech_orders', JSON.stringify([...existingOrders, newOrder]));
 
-    setIsSubmitted(true);
-    
-    // Simulate email confirmation (frontend only)
-    console.log("Order confirmed for:", user?.primaryEmailAddress?.emailAddress);
+      // Calculate price in XOF
+      const rateXOF = exchangeRates?.XOF || 655.957;
+      const priceXOF = Math.ceil(service.price * rateXOF);
+
+      const invoiceData = {
+        total_amount: priceXOF,
+        description: `Payment for ${service.title}`,
+        cancel_url: window.location.origin + "/checkout?status=cancel",
+        return_url: window.location.origin + "/?payment=success",
+        custom_data: {
+            order_id: newOrder.id,
+            service_id: service.id,
+            user_email: user?.primaryEmailAddress?.emailAddress,
+            phone: phone,
+            notes: notes
+        }
+      };
+
+      const result = await createPaydunyaInvoice(invoiceData);
+      
+      if (result.response_code === "00" && result.response_text) {
+           // Redirect to Paydunya
+           window.location.href = result.response_text;
+      } else {
+           console.error("Paydunya Response:", result);
+           throw new Error("Invalid response from Paydunya");
+      }
+
+    } catch (error) {
+      console.error("Payment initiation failed", error);
+      alert("Payment initiation failed. Please try again.");
+      setIsProcessing(false);
+    }
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white/5 border border-white/10 rounded-2xl p-8 text-center backdrop-blur-sm">
-          <div className="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8" />
-          </div>
-          <h2 className="text-3xl font-bold mb-4">Order Confirmed!</h2>
-          <p className="text-white/70 mb-8">
-            Thank you for your order. To complete the process, please proceed to payment via WhatsApp.
-          </p>
-          <Button 
-            onClick={handleWhatsAppPayment}
-            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0 font-bold py-6 text-lg"
-          >
-            Pay Now via WhatsApp
-          </Button>
-          <Button 
-            variant="link" 
-            onClick={() => navigate("/")}
-            className="mt-4 text-white/50 hover:text-white"
-          >
-            Return to Home
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -183,11 +177,11 @@ I would like to proceed with payment.`;
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-white/70">Phone Number (for WhatsApp)</label>
+                    <label className="block text-sm font-medium mb-2 text-white/70">Phone Number</label>
                     <Input 
                       required
                       type="tel"
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+221 77 000 00 00"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="bg-white/5 border-white/10 focus:border-cyan-400"
@@ -206,9 +200,17 @@ I would like to proceed with payment.`;
 
                   <Button 
                     type="submit"
+                    disabled={isProcessing}
                     className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white border-0 font-bold py-6"
                   >
-                    Confirm Order
+                    {isProcessing ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      "Pay & Confirm Order"
+                    )}
                   </Button>
                 </form>
               </div>

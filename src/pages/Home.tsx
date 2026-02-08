@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useUser, SignOutButton } from "@clerk/clerk-react";
@@ -22,6 +22,14 @@ export default function Home() {
   const { services, getIconComponent } = useServices();
   const { user, isSignedIn } = useUser();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      alert("Payment Successful! Thank you for your order. We will contact you shortly.");
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
