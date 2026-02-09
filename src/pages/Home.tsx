@@ -6,7 +6,6 @@ import { AnimatedGradientBackground } from "../components/AnimatedGradient";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
-import babelShopImg from "../assets/babel-shop.png";
 import { useCurrency } from "../context/CurrencyContext";
 import { useServices } from "../context/ServicesContext";
 import { 
@@ -66,6 +65,13 @@ export default function Home() {
       link: "https://kikideco.vercel.app/",
     },
     {
+      title: "Le Salon de la Marquise",
+      description: "Appels vidéo privés exclusifs avec Le Salon de la Marquise. Réservez instantanément, payez en toute sécurité via WhatsApp.",
+      image: "https://api.microlink.io/?url=https://lamarquise.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://lamarquise.vercel.app/",
+    },
+    {
       title: "EDK EMPIRE",
       description: "Luxe Africain • Livraison Mondiale - Redéfinition du luxe africain par Dame La Marquise, Marie Prudence Aya Edike Bai",
       image: "https://api.microlink.io/?url=https://edkempire.vercel.app/&screenshot=true&meta=false&embed=screenshot.url&waitFor=8s&waitUntil=networkidle0",
@@ -96,9 +102,9 @@ export default function Home() {
     {
       title: "Babel Shop Boutique",
       description: "Online boutique shop for fashion and lifestyle products",
-      image: babelShopImg,
+      image: "https://api.microlink.io/?url=https://babelshopespagne.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
       tech: ["Next.js", "E-commerce", "Tailwind CSS"],
-      link: "https://babelshopboutique.vercel.app/",
+      link: "https://babelshopespagne.vercel.app/",
     },
     {
       title: "Luxury Perfume",
