@@ -86,6 +86,22 @@ export default function Home() {
       link: "https://senparcdakar.vercel.app/",
     },
     {
+      title: "LOWENFELL - Piel de Leon",
+      description: "REFRESH YOUR ROUTINE SHAPE YOUR FITNESS - Engaging in regular exercise not only amplifies well-being and fortifies the body but also diminishes the likelihood of injuries thereby optimizing your performance.",
+      addedAt: new Date('2026-02-15T10:00:00Z').getTime(),
+      image: "https://api.microlink.io/?url=https://lowenfell.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://lowenfell.vercel.app/",
+    },
+    {
+      title: "Optiplus SAHM",
+      description: "Votre Vision, Notre Expertise - Spécialiste en lentilles de contact, prothèses oculaires et lunettes de grandes marques à Dakar, Sénégal.",
+      addedAt: new Date('2026-02-15T11:00:00Z').getTime(),
+      image: "https://api.microlink.io/?url=https://optiplus-tau.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
+      tech: ["Next.js", "React", "Tailwind CSS"],
+      link: "https://optiplus-tau.vercel.app/",
+    },
+    {
       title: "Yarahman Dental",
       description: "Modern dental clinic website with appointment scheduling and service information",
       image: "https://api.microlink.io/?url=https://yarahmandental.vercel.app/&screenshot=true&meta=false&embed=screenshot.url",
@@ -494,7 +510,9 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, idx) => (
+            {[...projects]
+              .sort((a: any, b: any) => (b.addedAt ?? 0) - (a.addedAt ?? 0))
+              .map((project, idx) => (
               <motion.a
                 key={idx}
                 href={project.link}
